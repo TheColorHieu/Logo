@@ -8,7 +8,7 @@ const {Triangle, Square, Circle} = require("./lib/shapes");
 //we are creating a function to create a file using the users input 
 function writeToFile(fileName , answers){
 //file starts aas an empty string
-let svgString = " ";
+let svgString = "";
 //setting the dimensions of the logo container
 svgString = '<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">';
 //the g tag wraps the tag so that the font input layers on top of polygon
@@ -37,7 +37,8 @@ switch (answers.shape) {
  // Closing </g> tag
  svgString += "</g>";
  // Closing </svg> tag
- svgString += "</svg>";
+ svgString += `${answers.shape}`;
+
 
  //this function takes in promptUser function along the svg string to be written in this file while letting user know if we are succesful 
  fs.writeFile(fileName, svgString, (err) => {
@@ -79,7 +80,7 @@ function promptUser(){
         },
     ])
     .then((answers) => {
-        //catching the error for the text prompt if users is entering more less than 3 characters 
+        //catching the error for the text prompt if users is entering more than 3 characters 
         if(answers.text.length > 3) {
             console.log("Must enter a value of no more than 3 characters");
             promptUser();
