@@ -33,11 +33,11 @@ switch (answers.shape) {
     break;
 }
  // <text> tag gives rise to text alignment, text-content/text-color taken in from user prompt and gives default font size of "40"
- svgString += `<text x="150" y="130" text-anchor="middle" font-size="40" fill="${answers.textColor}">${answers.text}</text>`;
+ svgString += `<text x="150" y="130" text-anchor="middle" font-size="40" fill="${answers.textColor}">${answers.text}</text>${answers.shapeBackgroundColor}`;
  // Closing </g> tag
  svgString += "</g>";
  // Closing </svg> tag
- svgString += `${answers.shape}`;
+ svgString +=  "</svg>";
 
 
  //this function takes in promptUser function along the svg string to be written in this file while letting user know if we are succesful 
@@ -76,7 +76,7 @@ function promptUser(){
         {
          type: "input",
          message: "Choose shapes color (Enter color OR hexadecimal number)",
-         name: "shapBackgroundColor",
+         name: "shapeBackgroundColor",
         },
     ])
     .then((answers) => {
